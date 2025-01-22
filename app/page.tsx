@@ -1,7 +1,6 @@
 'use client'
-import Image from "next/image";
 import { ProfileCard } from "./_components/ProfileCard";
-import { HomeIcon, FolderIcon, LayoutGridIcon, KeyIcon, PenSquareIcon } from "lucide-react"
+import { HomeIcon, FolderIcon } from "lucide-react"
 import FullStackDevCard from "./_components/FullStackDevCard";
 import MobileDevCard from "./_components/MobileDevCard";
 import { useRef } from "react";

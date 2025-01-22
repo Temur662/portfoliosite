@@ -24,7 +24,7 @@ export function ProfileCard() {
 
         {
           socials.map((social) => (
-            <a href={social.link}>
+            <a href={social.link} key={social.link}>
               <motion.div
                 whileHover={{ scale : 1.5 }}
               >

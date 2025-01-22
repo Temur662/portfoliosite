@@ -3,7 +3,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import Image, { StaticImageData } from "next/image";
-import MASSIAPP from '@/public/MASSIapp.png'
 const ProjectCards = ({ img, title, body, link, state} : { img : StaticImageData, title : string, body : string, link : string, state : boolean }) => {
   const [isHovered, setIsHovered] = useState(false);
   return (
