@@ -17,10 +17,10 @@ export default function MobileDevCard() {
         <div className='flex flex-col items-center justify-center'>
             <p className='text-2xl font-bold text-[#3d53e2] text-center'>Mobile Development</p>
             { /* What Tools / Frameworks */ }
-            <section className='flex flex-row gap-x-2'>
+            <section className='flex flex-row gap-x-3 flex-wrap w-full justify-center '>
                 {
                     tools.map((tool) => (
-                        <ToolCard title={tool.title} icon={tool.icon} />
+                        <ToolCard title={tool.title} icon={tool.icon} key={tool.title}/>
                     ))
                 }
             </section>

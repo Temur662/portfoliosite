@@ -78,14 +78,14 @@ export default function Home() {
         className={
           WindowSize.width! > 768 
             ? 'w-3/5 p-6 overflow-y-auto'
-            : 'w-full p-4 border' // On mobile, allow normal scrolling of the entire page
+            : 'w-full p-4' // On mobile, allow normal scrolling of the entire page
         }
         style={{
           overflowX: 'clip', // Prevent horizontal scroll
         }}
       >
               {/* Intro + Tech Stacks */}
-              <section className="max-w-[100%] md:max-w-[60%] md:h-[80vh] h-auto"
+              <section className="max-w-[100%] md:max-w-[75%] md:h-[80vh] h-auto"
               ref={IntroRef}
               >
                   <h1 className="md:text-8xl text-6xl font-bold flex-col flex text-center self-center md:text-start md:self-start">
@@ -102,14 +102,14 @@ export default function Home() {
               </section>
 
               {/* Projects & Experience */}
-              <section className="max-w-[100%] md:max-w-[60%] md:pt-20 pt-10"
+              <section className="max-w-[100%] md:max-w-[75%] md:pt-20 pt-10"
               ref={ProjectsRef}
               >
                   <h1 className="md:text-8xl text-6xl font-bold flex-col flex text-center self-center md:text-start md:self-start">
                     <span className="text-white">Projects</span>
                     <span className="text-gray-800">Apps</span>
                   </h1>
-                  <div className="pt-8">
+                  <div className="pt-8 w-[100%] h-auto">
                     <Github />
                   </div>
               </section>

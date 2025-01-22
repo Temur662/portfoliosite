@@ -15,13 +15,13 @@ export function ToolCard({title, icon } : {title : string, icon : any }) {
   return (
       <div
         whileHover={{ scale: 1.05 }}
-        className={`rounded-xl transition-all duration-300 hover:shadow-2xl cursor-pointer items-center mx-2 my-2`}
+        className={`rounded-xl transition-all duration-300 hover:shadow-2xl cursor-pointer items-center mx-2 my-2 md:w-[8rem] w-1/4 bg-[#2c2a2a] md:h-[8rem] h-[5rem]`}
       >
-          <div className="text-4xl">
+          <div className="text-4xl h-full">
               <Card title={title} icon={icon}>
               <CanvasRevealEffect
-                animationSpeed={5.1}
-                containerClassName="bg-emerald-900 rounded-xl overflow-hidden"
+                animationSpeed={3}
+                containerClassName="bg-[#3d53e2] rounded-xl overflow-hidden"
               />
               </Card>
           </div>
@@ -46,7 +46,7 @@ const Card = ({
       <div
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
-        className=" rounded-xl group/canvas-card flex items-center justify-center dark:border-white/[0.2]  max-w-sm w-full mx-auto p-4 relative h-[8rem] "
+        className=" rounded-xl group/canvas-card flex items-center justify-center dark:border-white/[0.2] w-full mx-auto p-4 relative h-full"
       >
    
         <AnimatePresence>
@@ -54,18 +54,18 @@ const Card = ({
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              className="h-full w-full absolute inset-0"
+              className="md:h-[8rem] w-full absolute inset-0"
             >
               {children}
             </motion.div>
           )}
         </AnimatePresence>
    
-        <div className="relative z-20">
-          <div className="text-center group-hover/canvas-card:-translate-y-4 group-hover/canvas-card:opacity-0 transition duration-200 w-full  mx-auto flex items-center justify-center">
+        <div className="relative z-20 w-full h-full md:pt-[25%]">
+          <div className="text-center group-hover/canvas-card:-translate-y-4 group-hover/canvas-card:opacity-0 transition duration-200 w-full  mx-auto flex items-center justify-center absolute">
             {icon}
           </div>
-          <h2 className="dark:text-white text-xl opacity-0 group-hover/canvas-card:opacity-100 relative z-10 text-black font-bold group-hover/canvas-card:text-white group-hover/canvas-card:-translate-y-2 transition duration-200">
+          <h2 className="dark:text-white text-lg opacity-0 group-hover/canvas-card:opacity-100 absolute z-10 text-black font-bold group-hover/canvas-card:text-white group-hover/canvas-card:-translate-y-2 transition duration-200">
             {title}
           </h2>
         </div>
