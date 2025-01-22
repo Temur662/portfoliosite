@@ -14,7 +14,6 @@ interface ToolCardProps {
 export function ToolCard({title, icon } : {title : string, icon : any }) {
   return (
       <div
-        whileHover={{ scale: 1.05 }}
         className={`rounded-xl transition-all duration-300 hover:shadow-2xl cursor-pointer items-center mx-2 my-2 md:w-[8rem] w-1/4 bg-[#2c2a2a] md:h-[8rem] h-[5rem]`}
       >
           <div className="text-4xl h-full">
