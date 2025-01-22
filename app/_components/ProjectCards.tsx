@@ -2,30 +2,27 @@
 
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import MASSIAPP from '@/public/MASSIapp.png'
-const ProjectCards = () => {
+const ProjectCards = ({ img, title, body, link, state} : { img : StaticImageData, title : string, body : string, link : string, state : boolean }) => {
   const [isHovered, setIsHovered] = useState(false);
-
   return (
-    <a href='https://apps.apple.com/us/app/mas-si/id6683310989'>
-        <motion.div className="h-[200px] w-full center hover:cursor-pointer"
+    <a href={link}>
+        <motion.div className={`h-[200px] w-full center ${state == false ? 'hover:cursor-progress' : 'hover:cursor-pointer'}`}
             whileHover={{ scale : 1.05 }}
         >
           <div
-            className="py-2 px-4 flex items-center gap-2 bg-primary text-primary-foreground hover:bg-primary/90 justify-between h-full rounded-xl"
+            className={`py-2 px-4 flex items-center gap-2 bg-primary text-primary-foreground hover:bg-primary/90 justify-between h-full rounded-xl ${state == false ? 'backdrop-blur-xl' : ''} `}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
           >
     
-    
-        <Image src={MASSIAPP} alt="profile pic" priority className="w-2/5 h-full rounded-xl"/>
-
-    
+            
+           <Image src={img} alt="profile pic" priority className={`w-2/5 h-full rounded-xl object-cover ${state == false ? 'blur-[2px]' : ''}`}/>    
     
             <div className="pl-8">
-                <p className="font-bold text-3xl text-white">MAS SI</p>
-                <p className="text-gray-600 ">All-in-one platform designed to connect the Muslim American Society of Staten Island community.</p>
+                <p className="font-bold text-3xl text-white">{title}</p>
+                <p className="text-gray-600 ">{body}</p>
             </div>
     
     

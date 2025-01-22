@@ -6,8 +6,10 @@ import FullStackDevCard from "./_components/FullStackDevCard";
 import MobileDevCard from "./_components/MobileDevCard";
 import { useRef } from "react";
 import { useWindowSize } from "@uidotdev/usehooks";
-import Github from "./_components/ProjectCards";
-
+import ProjectCards from "./_components/ProjectCards";
+import MASSIAPP from '@/public/MASSIapp.png'
+import RepairConnect from '@/public/RepairConnect2.png'
+import MedianFiltering from '@/public/MedianFiltering.png'
 export default function Home() {  
   const scrollableRef = useRef(null);
   const WindowSize = useWindowSize();
@@ -15,13 +17,10 @@ export default function Home() {
   const ProjectsRef = useRef(null)
   const NavBar = () => {
     return(
-      <nav className="bg-[#242526] p-4 flex justify-center gap-5 backdrop-blur-md rounded-xl w-[250px] md:ml-[42%] ml-[20%]">
+      <nav className="bg-[#242526] p-4 flex justify-center gap-5 gap-x-12 backdrop-blur-md rounded-xl w-[250px] md:ml-[42%] ml-[20%]">
         {[
           { icon: HomeIcon, href: () => IntroRef.current.scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" })  },
           { icon: FolderIcon, href: () => ProjectsRef.current.scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" }) },
-          { icon: LayoutGridIcon, href: () => {} },
-          { icon: KeyIcon, href: () => {} },
-          { icon: PenSquareIcon, href: () => {} },
         ].map((item, index) => (
           <div key={index} className="text-gray-400 hover:text-white transition-colors"
             onClick={item.href}
@@ -39,6 +38,12 @@ export default function Home() {
       scrollableRef.current.scrollTop += event.deltaY;
     }
   };
+
+  const ProjectsAndApps = [
+    { img : RepairConnect, title : 'RepairConnect', body : 'The All-in-One Automotive Solution! One app to schedule top mechanics, mobile mechanics, and mobile detailers—bringing unmatched convenience to your doorstep.', link : '#', state : false},
+    { img : MASSIAPP,  title : 'MAS Staten Island App', body : 'All-in-one platform designed to connect the Muslim American Society of Staten Island community.', link : 'https://apps.apple.com/us/app/mas-si/id6683310989', state : true },
+    { img : MedianFiltering, title : 'Median Filtering', body : 'Median filtering algorithm to refine blurry and grainy images', link : 'https://github.com/Temur662/MedianFiltering', state : true}
+  ]
   return (
     <div className="w-full bg-[#1a1a1a] text-white min-h-screen">
       {/* Top NavBar for both mobile & desktop */}
@@ -95,24 +100,29 @@ export default function Home() {
                   <p className="text-gray-400 mt-4 max-w-md text-center self-center md:text-start md:self-start text-lg">
                   Passionate about creating intuitive and engaging user experiences. Specialize in transforming ideas into beautifully crafted products.
                   </p>
-                  <div className="flex flex-col justify-between pt-9 overflow-wrap">
+                  <div className="flex flex-col justify-between pt-9 overflow-wrap gap-8">
                       <FullStackDevCard />
                       <MobileDevCard />
                   </div>
               </section>
 
               {/* Projects & Experience */}
-              <section className="max-w-[100%] md:max-w-[75%] md:pt-20 pt-10"
+              <section className="max-w-[100%] md:max-w-[75%] md:pt-20 pt-10 pb-[60px]"
               ref={ProjectsRef}
               >
                   <h1 className="md:text-8xl text-6xl font-bold flex-col flex text-center self-center md:text-start md:self-start">
                     <span className="text-white">Projects</span>
                     <span className="text-gray-800">Apps</span>
                   </h1>
-                  <div className="pt-8 w-[100%] h-auto">
-                    <Github />
+                  <div className="pt-8 w-[100%] h-auto gap-y-10 flex flex-col">
+                    {
+                      ProjectsAndApps.map((project) => (
+                        <ProjectCards img={project.img} title={project.title} body={project.body} state={project.state} link={project.link} key={project.title}/>
+                      ))
+                    }
                   </div>
               </section>
+
       </div>
     </div>
     </div>
