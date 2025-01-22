@@ -18,7 +18,7 @@ export function ProfileCard() {
       <div className="w-12 h-12 bg-[#3d53e2] rounded-full flex items-center justify-center mb-4">
         <span className="text-white text-2xl">⚽️</span>
       </div>
-      <p className="text-gray-600 mb-6">A Software Engineer who has developed countless innovative solutions.</p>
+      <p className="text-gray-600 mb-6">A Software Engineer who loves developing innovative solutions.</p>
 
       <div className="flex flex-row gap-x-8">
 
