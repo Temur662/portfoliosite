@@ -53,7 +53,7 @@ const Card = ({
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              className="md:h-[8rem] w-full absolute inset-0"
+              className="md:h-[8rem] w-full absolute inset-0 h-[5rem]"
             >
               {children}
             </motion.div>
@@ -64,7 +64,7 @@ const Card = ({
           <div className="text-center group-hover/canvas-card:-translate-y-4 group-hover/canvas-card:opacity-0 transition duration-200 w-full  mx-auto flex items-center justify-center absolute">
             {icon}
           </div>
-          <h2 className="dark:text-white text-7xl opacity-0 group-hover/canvas-card:opacity-100 absolute z-10 text-black font-bold group-hover/canvas-card:text-white group-hover/canvas-card:-translate-y-6 transition duration-200 left-[13%]">
+          <h2 className="dark:text-white text-7xl opacity-0 group-hover/canvas-card:opacity-100 absolute z-10 text-black font-bold group-hover/canvas-card:text-white group-hover/canvas-card:-translate-y-6 transition duration-200 md:left-[13%] top-3 md:top-8">
             {icon}
           </h2>
         </div>

@@ -20,8 +20,8 @@ const ProjectCards = ({ img, title, body, link, state} : { img : StaticImageData
            <Image src={img} alt="profile pic" priority className={`w-2/5 h-full rounded-xl object-cover ${state == false ? 'blur-[2px]' : ''}`}/>    
     
             <div className="pl-8">
-                <p className="font-bold text-3xl text-white">{title}</p>
-                <p className="text-gray-600 ">{body}</p>
+                <p className="font-bold md:text-3xl text-xl text-white">{title}</p>
+                <p className="text-gray-600 md:text-md text-sm">{body}</p>
             </div>
     
     

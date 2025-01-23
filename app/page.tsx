@@ -3,7 +3,7 @@ import { ProfileCard } from "./_components/ProfileCard";
 import { HomeIcon, FolderIcon } from "lucide-react"
 import FullStackDevCard from "./_components/FullStackDevCard";
 import MobileDevCard from "./_components/MobileDevCard";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useWindowSize } from "@uidotdev/usehooks";
 import ProjectCards from "./_components/ProjectCards";
 import MASSIAPP from '@/public/MASSIapp.png'
@@ -31,15 +31,13 @@ export default function Home() {
     )
   }
   const handleWheel = (event) => {
-    event.preventDefault(); // Prevent the default browser scroll
     if (scrollableRef.current) {
       // Programmatically scroll the right-side container
       scrollableRef.current.scrollTop += event.deltaY;
     }
   };
-
   const ProjectsAndApps = [
-    { img : RepairConnect, title : 'RepairConnect', body : 'The All-in-One Automotive Solution! One app to schedule top mechanics, mobile mechanics, and mobile detailers—bringing unmatched convenience to your doorstep.', link : '#', state : false},
+    { img : RepairConnect, title : 'RepairConnect', body : 'One app to schedule top mechanics, mobile mechanics, and mobile detailers bringing unmatched convenience to your doorstep.', link : '#', state : false},
     { img : MASSIAPP,  title : 'MAS Staten Island App', body : 'All-in-one platform designed to connect the Muslim American Society of Staten Island community.', link : 'https://apps.apple.com/us/app/mas-si/id6683310989', state : true },
     { img : MedianFiltering, title : 'Median Filtering', body : 'Median filtering algorithm to refine blurry and grainy images', link : 'https://github.com/Temur662/MedianFiltering', state : true}
   ]
