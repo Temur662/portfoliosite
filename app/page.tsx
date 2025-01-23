@@ -3,17 +3,19 @@ import { ProfileCard } from "./_components/ProfileCard";
 import { HomeIcon, FolderIcon } from "lucide-react"
 import FullStackDevCard from "./_components/FullStackDevCard";
 import MobileDevCard from "./_components/MobileDevCard";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useWindowSize } from "@uidotdev/usehooks";
 import ProjectCards from "./_components/ProjectCards";
 import MASSIAPP from '@/public/MASSIapp.png'
 import RepairConnect from '@/public/RepairConnect2.png'
 import MedianFiltering from '@/public/MedianFiltering.png'
+import ExpandableCard from "@/components/ExpandableProjects";
 export default function Home() {  
   const scrollableRef = useRef(null);
   const WindowSize = useWindowSize();
   const IntroRef = useRef(null)
   const ProjectsRef = useRef(null)
+  const [ overlay, setOverlay ] = useState(true)
   const NavBar = () => {
     return(
       <nav className="bg-[#242526] p-4 flex justify-center gap-5 gap-x-12 backdrop-blur-md rounded-xl w-[250px] md:ml-[42%] ml-[20%]">
@@ -31,7 +33,7 @@ export default function Home() {
     )
   }
   const handleWheel = (event) => {
-    if (scrollableRef.current) {
+    if ( scrollableRef.current ) {
       // Programmatically scroll the right-side container
       scrollableRef.current.scrollTop += event.deltaY;
     }
@@ -80,7 +82,7 @@ export default function Home() {
         className={
           WindowSize.width! > 768 
             ? 'w-3/5 p-6 overflow-y-auto'
-            : 'w-full p-4' // On mobile, allow normal scrolling of the entire page
+            : 'w-full p-4 flex flex-col' // On mobile, allow normal scrolling of the entire page
         }
         style={{
           overflowX: 'clip', // Prevent horizontal scroll
@@ -111,15 +113,10 @@ export default function Home() {
                     <span className="text-white">Projects</span>
                     <span className="text-gray-800">Apps</span>
                   </h1>
-                  <div className="pt-8 w-[100%] h-auto gap-y-10 flex flex-col">
-                    {
-                      ProjectsAndApps.map((project) => (
-                        <ProjectCards img={project.img} title={project.title} body={project.body} state={project.state} link={project.link} key={project.title}/>
-                      ))
-                    }
+                  <div className="pt-12 w-[100%]">
+                    <ExpandableCard />
                   </div>
               </section>
-
       </div>
     </div>
     </div>

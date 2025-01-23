@@ -25,9 +25,6 @@ const ProjectCards = ({ img, title, body, link, state} : { img : StaticImageData
             </div>
     
     
-    
-    
-    
             <motion.svg
               width="50"
               height="50"
