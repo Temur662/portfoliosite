@@ -20,8 +20,8 @@ export default function Home() {
     return(
       <nav className="bg-[#242526] p-4 flex justify-center gap-5 gap-x-12 backdrop-blur-md rounded-xl w-[250px] md:ml-[42%] ml-[20%]">
         {[
-          { icon: HomeIcon, href: () => IntroRef.current.scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" })  },
-          { icon: FolderIcon, href: () => ProjectsRef.current.scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" }) },
+          { icon: HomeIcon, href: () => IntroRef.current.scrollIntoView({ behavior: "smooth", block: WindowSize.width! > 768 ? "end" : "start", inline: "nearest" })  },
+          { icon: FolderIcon, href: () => ProjectsRef.current.scrollIntoView({ behavior: "smooth", block: WindowSize.width! > 768 ? "end" : "start", inline: "nearest" }) },
         ].map((item, index) => (
           <div key={index} className="text-gray-400 hover:text-white transition-colors"
             onClick={item.href}
