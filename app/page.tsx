@@ -18,7 +18,7 @@ export default function Home() {
   const [ overlay, setOverlay ] = useState(true)
   const NavBar = () => {
     return(
-      <nav className="bg-[#242526] p-4 flex justify-center gap-5 gap-x-12 backdrop-blur-md rounded-xl w-[250px] md:ml-[42%] ml-[20%]">
+      <nav className="bg-[#242526] p-4 flex justify-center gap-5 gap-x-12 backdrop-blur-md rounded-xl w-[250px] md:ml-[41%] ml-[20%]">
         {[
           { icon: HomeIcon, href: () => IntroRef.current.scrollIntoView({ behavior: "smooth", block: WindowSize.width! > 768 ? "end" : "start", inline: "nearest" })  },
           { icon: FolderIcon, href: () => ProjectsRef.current.scrollIntoView({ behavior: "smooth", block: WindowSize.width! > 768 ? "end" : "start", inline: "nearest" }) },
@@ -44,7 +44,7 @@ export default function Home() {
     { img : MedianFiltering, title : 'Median Filtering', body : 'Median filtering algorithm to refine blurry and grainy images', link : 'https://github.com/Temur662/MedianFiltering', state : true}
   ]
   return (
-    <div className="w-full bg-[#1a1a1a] text-white min-h-screen">
+    <div className="w-full bg-[#1a1a1a] text-white">
       {/* Top NavBar for both mobile & desktop */}
       <div className="pt-[2%]"/>
       <NavBar />
@@ -81,7 +81,7 @@ export default function Home() {
         ref={scrollableRef}
         className={
           WindowSize.width! > 768 
-            ? 'w-3/5 p-6 overflow-y-auto'
+            ? 'w-3/5 p-4 overflow-y-scroll'
             : 'w-full p-4 flex flex-col' // On mobile, allow normal scrolling of the entire page
         }
         style={{
@@ -89,7 +89,7 @@ export default function Home() {
         }}
       >
               {/* Intro + Tech Stacks */}
-              <section className="max-w-[100%] md:max-w-[75%] md:h-[80vh] h-auto"
+              <section className="max-w-[100%] md:max-w-[75%] h-auto"
               ref={IntroRef}
               >
                   <h1 className="md:text-8xl text-6xl font-bold flex-col flex text-center self-center md:text-start md:self-start">
@@ -106,7 +106,7 @@ export default function Home() {
               </section>
 
               {/* Projects & Experience */}
-              <section className="max-w-[100%] md:max-w-[75%] md:pt-20 pt-10 pb-[60px]"
+              <section className="max-w-[100%] md:max-w-[75%] md:pt-20 pt-10 pb-[10px]"
               ref={ProjectsRef}
               >
                   <h1 className="md:text-8xl text-6xl font-bold flex-col flex text-center self-center md:text-start md:self-start">
