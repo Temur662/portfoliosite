@@ -113,7 +113,7 @@ export default function ExpandableCard() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    className=" text-neutral-600 text-xs md:text-sm lg:text-base md:h-fit pb-10 flex flex-col items-start gap-4 dark:text-neutral-400 [scrollbar-width:none]  [-webkit-overflow-scrolling:touch] md:p-4 md:[mask:linear-gradient(to_bottom,white,white,transparent)] [-ms-overflow-style:none] md:overflow-auto"
+                    className=" text-neutral-600 text-xs md:text-sm lg:text-base h-auto md:h-fit pb-10 flex flex-col items-start gap-4 overflow-auto dark:text-neutral-400 [mask:linear-gradient(to_bottom,white,white,transparent)] [scrollbar-width:none] [-ms-overflow-style:none] [-webkit-overflow-scrolling:touch]"
                   >
                     {typeof active.content === "function"
                       ? active.content()

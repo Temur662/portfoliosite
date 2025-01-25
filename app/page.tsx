@@ -18,7 +18,7 @@ export default function Home() {
   const [ overlay, setOverlay ] = useState(true)
   const NavBar = () => {
     return(
-      <nav className="bg-[#242526] p-4 flex justify-center gap-5 gap-x-12 backdrop-blur-md rounded-xl w-[250px] md:ml-[41%] ml-[20%]">
+      <nav className="bg-[#242526] p-4 flex justify-center gap-5 gap-x-12 backdrop-blur-md rounded-xl w-[250px] md:ml-[33%] mx-[20%] lg:ml-[41%]">
         {[
           { icon: HomeIcon, href: () => IntroRef.current.scrollIntoView({ behavior: "smooth", block: WindowSize.width! > 768 ? "end" : "start", inline: "nearest" })  },
           { icon: FolderIcon, href: () => ProjectsRef.current.scrollIntoView({ behavior: "smooth", block: WindowSize.width! > 768 ? "end" : "start", inline: "nearest" }) },
@@ -65,10 +65,10 @@ export default function Home() {
       className={
         WindowSize.width! > 768 
               ? 'w-2/5 p-6'
-              : 'w-full p-6'
+              : 'w-full p-6 items-center justify-center'
           }
       >
-        <div className="float-right"><ProfileCard /></div>
+        <div className={`${WindowSize.width! > 768 ? 'float-right' : ''}`}><ProfileCard /></div>
       </div>
   
       {/*
