@@ -1,10 +1,11 @@
 import Image from "next/image"
 import profilePic from '@/public/profilepic.png'
-import { LinkedinIcon, Github, Mail } from "lucide-react"
+import { LinkedinIcon, Github, Mail, FileText } from "lucide-react"
 import { motion } from "framer-motion"
 
 export function ProfileCard() {
   const socials = [
+    {icon : <FileText className="text-[#3d53e2] hover:cursor-pointer h-[30px] w-[30px]"/>, link : 'https://temur-resume.tiiny.site'},
     {icon : <LinkedinIcon className="text-[#3d53e2] hover:cursor-pointer h-[30px] w-[30px]"/>, link : 'https://www.linkedin.com/in/temurbek-sayfutdinov/'},
     {icon : <Github className="text-[#3d53e2] hover:cursor-pointer  h-[30px] w-[30px]"/>, link: 'https://github.com/Temur662'},
     {icon : <Mail className="text-[#3d53e2] hover:cursor-pointer  h-[30px] w-[30px]"/>, link : 'https://mailxto.com/y7nabhjw6y'}
