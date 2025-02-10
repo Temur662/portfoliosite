@@ -6,6 +6,7 @@ import { useOutsideClick } from "@/hooks/use-outside-click";
 import MASSIAPP from '@/public/MASSIapp.png'
 import RepairConnect from '@/public/RepairConnect2.png'
 import MedianFiltering from '@/public/MedianFiltering.png'
+import CoffeeDrop from '@/public/CoffeeDrop.png'
 export default function ExpandableCard() {
   const [active, setActive] = useState<(typeof cards)[number] | boolean | null>(
     null
@@ -247,6 +248,27 @@ const cards = [
       return (
         <p>
           Coming Soon... 2026🏎️
+        </p>
+      );
+    },
+    state : false
+  },
+  {
+    description : "A universal loyalty platform that consolidates every cafe’s reward program into one app, so coffee lovers can explore multiple shops without sacrificing their points",
+    title: "CoffeeDrop",
+    src: CoffeeDrop,
+    ctaText: "🕰️",
+    ctaLink: "#",
+    content: () => {
+      return (
+        <p>
+          Coming Soon... Summer 2025<br/>
+          <strong>Backstory:</strong><br/>
+            imagine you are a frequent cafe visitor, each shop you go to has their own loyalty program which you automatically get signed up for on payment,
+            You are stuck at level 1 of the loyal program at 7 different shops, imagine you could get point for each purchase to earn points for any shop.
+            <br /> <br />
+            <strong>The Problem:</strong><br/>
+            Every cafe as their own loyalty program confining users to that shop, benefiting for the cafe but limits customers to that shop and that feeling of never achieving or using those points.
         </p>
       );
     },
