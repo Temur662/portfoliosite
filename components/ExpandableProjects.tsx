@@ -262,7 +262,7 @@ const cards = [
     content: () => {
       return (
         <p>
-          Coming Soon... Summer 2025<br/>
+          Coming Soon... Summer 2025☕️<br/>
           <strong>Backstory:</strong><br/>
             imagine you are a frequent cafe visitor, each shop you go to has their own loyalty program which you automatically get signed up for on payment,
             You are stuck at level 1 of the loyal program at 7 different shops, imagine you could get point for each purchase to earn points for any shop.
