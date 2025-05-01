@@ -7,6 +7,7 @@ import MASSIAPP from '@/public/MASSIapp.png'
 import RepairConnect from '@/public/RepairConnect2.png'
 import MedianFiltering from '@/public/MedianFiltering.png'
 import CoffeeDrop from '@/public/CoffeeDrop.png'
+import PIPDemand from '@/public/PIPDemand.png'
 export default function ExpandableCard() {
   const [active, setActive] = useState<(typeof cards)[number] | boolean | null>(
     null
@@ -74,11 +75,10 @@ export default function ExpandableCard() {
               <motion.div layoutId={`image-${active.title}-${id}`}>
                 <Image
                   priority
-                  width={200}
-                  height={200}
+                 
                   src={active.src}
                   alt={active.title}
-                  className="w-full h-80 lg:h-80 sm:rounded-tr-lg sm:rounded-tl-lg object-cover object-top"
+                  className="w-full h-80 lg:h-80 sm:rounded-tr-lg sm:rounded-tl-lg aspect-square object-cover object-top"
                 />
               </motion.div>
 
@@ -136,18 +136,18 @@ export default function ExpandableCard() {
             key={`card-${card.title}-${id}`}
             onClick={() => setActive(card)}
             whileHover={{ scale : 1.05 }}
-            className="p-4 flex flex-col md:flex-row justify-between items-center dark:hover:bg-neutral-800 rounded-xl cursor-pointer h-auto w-full center"
+            className="p-4 flex flex-col md:flex-row justify-between items-center dark:hover:bg-neutral-800 rounded-xl cursor-pointer h-full w-full"
           >
             <div className="flex gap-4 flex-col md:flex-row  border-2 border-gray-700 rounded-xl  p-4 items-center md:items-start md:border-0 md:p-2"
             onMouseEnter={() => setIsHovered(true) }
             onMouseLeave={() =>  setIsHovered(false)}
             >
 
-              <motion.div layoutId={`image-${card.title}-${id}`}>
+              <motion.div layoutId={`image-${card.title}-${id}`} className="w-40 flex-shrink-0">
                 <Image
                   src={card.src}
                   alt={card.title}
-                  className={`w-[200px] h-[200px] rounded-xl object-cover ${card.state == false ? 'blur-[2px]' : ''} object-top`}
+                  className={`w-full h-full aspect-square rounded-xl object-cover ${card.state == false ? 'blur-[2px]' : ''} object-top`}
                 />
               </motion.div>
 
@@ -314,15 +314,38 @@ const cards = [
     state : true
   },
   {
-    description: "Median filtering algorithm to refine blurry and grainy images.",
-    title: "Median Filtering",
-    src: MedianFiltering,
+    description: "This Python project addresses the manual task of creating PIP demand letters by automatically parsing patient billing data from Excel spreadsheets using Pandas. Leveraging ReportLab, the script generates precise, individualized PDF letters for auto insurance claims.",
+    title: "TheraOffice Excel Scraper",
+    src: PIPDemand,
     ctaText: "View",
-    ctaLink: "https://github.com/Temur662/MedianFiltering",
+    ctaLink: "https://github.com/Temur662/TheraOfficeExcelScraper",
     content: () => {
       return (
         <p>
-         
+         <strong>TheraOffice Excel Scraper</strong>
+          <br/>
+          This project was developed in collaboration with a law firm to streamline the creation of over 2,000 demand letters.
+          <br />
+          It Reads patient and billing data directly from an Excel file (.XLS or .xlsx).
+          Cleans and formats data, handling potential errors in date and numeric columns.
+          Filters records specifically for patients with claims under designated auto insurance providers.
+          Calculates the outstanding balance for each service line and aggregates the total balance per patient.
+          Groups charges and patient details by Patient ID.
+          Provides console output summarizing the processed information for each patient.
+          Includes basic error handling for file not found and missing columns.
+          Data Loading: Reads the specified Excel file into a pandas DataFrame.
+          Data Cleaning:
+          Converts date columns to datetime objects.
+          Converts financial columns (Total Charges, Payments, Adjustments, Credits) to numeric types, handling errors and filling missing values with 0.
+          Ensures other key columns are treated as strings.
+          Balance Calculation: Computes the LineBalance for each individual charge line by subtracting payments, adjustments, and credits from the total charge.
+          Filtering: Selects rows where the Primary Insurance column contains one of the keywords from the AUTO_INSURANCES list and the visit date is valid.
+          Grouping & Aggregation:
+          Groups the filtered data by Pat ID.
+          Aggregates summary information for each patient (Name, Insurance ID, Dates of Service, Total Balance, etc.).
+          Collects detailed charge information (Date, CPT, Provider, Facility, Line Balance, etc.) into a list for each patient.
+          PDF Generation: Iterates through the summarized patient data. For each patient, it calls the generate_pdf function (from the GenPDF module, which utilizes the reportlab library) to create a PDF demand letter named FirstName_LastName.pdf.
+          Output: Prints a summary of each patient's information and charge details to the console after generating their PDF.
         </p>
       );
     },
