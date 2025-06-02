@@ -8,6 +8,7 @@ import RepairConnect from '@/public/RepairConnect2.png'
 import MedianFiltering from '@/public/MedianFiltering.png'
 import CoffeeDrop from '@/public/CoffeeDrop.png'
 import PIPDemand from '@/public/PIPDemand.png'
+import MountainSpine from '@/public/MoutainSpine.png'
 export default function ExpandableCard() {
   const [active, setActive] = useState<(typeof cards)[number] | boolean | null>(
     null
@@ -254,26 +255,56 @@ const cards = [
     state : false
   },
   {
-    description : "A universal loyalty platform that consolidates every cafe’s reward program into one app, so coffee lovers can explore multiple shops without sacrificing their points",
-    title: "CoffeeDrop",
-    src: CoffeeDrop,
-    ctaText: "🕰️",
-    ctaLink: "#",
-    content: () => {
+    description: 'Mountain Spine & Orthopedics is a medical practice with 8 Locations in Floridathat provides a range of services to help patients with their orthopedic needs.',
+    title : 'Mountain Spine & Orthopedics',
+    src : MountainSpine,
+    ctaText : 'View',
+    ctaLink : 'https://mountainspineorthopedics.com/',
+    content : () => {
       return (
         <p>
-          Coming Soon... Summer 2025☕️<br/>
-          <strong>Backstory:</strong><br/>
-            imagine you are a frequent cafe visitor, each shop you go to has their own loyalty program which you automatically get signed up for on payment,
-            You are stuck at level 1 of the loyal program at 7 different shops, imagine you could get point for each purchase to earn points for any shop.
-            <br /> <br />
-            <strong>The Problem:</strong><br/>
-            Every cafe as their own loyalty program confining users to that shop, benefiting for the cafe but limits customers to that shop and that feeling of never achieving or using those points.
+          <strong>Project Overview</strong><br/>
+          Developed and launched a comprehensive website for Mountain Spine & Orthopedics, a leading orthopedic practice with 8 locations across Florida.
+          <br/><br/>
+
+          <strong>Key Achievements</strong><br/>
+          • Designed and built a modern, user-friendly website optimized for patient engagement<br/>
+          • Implemented advanced SEO strategies to improve online visibility and search rankings<br/>
+          • Created and managed targeted marketing campaigns to reach potential patients<br/>
+          • Successfully generating 10+ new patient cases monthly through the website<br/>
+          <br/>
+
+          <strong>Technical Implementation</strong><br/>
+          • Optimized site performance and loading speeds for better user experience<br/>
+          • Integrated location-based services to help patients find their nearest clinic<br/>
+          • Developed responsive design ensuring seamless access across all devices<br/>
+          • Implemented secure contact forms and appointment scheduling systems
         </p>
-      );
+      )
     },
-    state : false
+    state : true
   },
+  // {
+  //   description : "A universal loyalty platform that consolidates every cafe’s reward program into one app, so coffee lovers can explore multiple shops without sacrificing their points",
+  //   title: "CoffeeDrop",
+  //   src: CoffeeDrop,
+  //   ctaText: "🕰️",
+  //   ctaLink: "#",
+  //   content: () => {
+  //     return (
+  //       <p>
+  //         Coming Soon... Summer 2025☕️<br/>
+  //         <strong>Backstory:</strong><br/>
+  //           imagine you are a frequent cafe visitor, each shop you go to has their own loyalty program which you automatically get signed up for on payment,
+  //           You are stuck at level 1 of the loyal program at 7 different shops, imagine you could get point for each purchase to earn points for any shop.
+  //           <br /> <br />
+  //           <strong>The Problem:</strong><br/>
+  //           Every cafe as their own loyalty program confining users to that shop, benefiting for the cafe but limits customers to that shop and that feeling of never achieving or using those points.
+  //       </p>
+  //     );
+  //   },
+  //   state : false
+  // },
   {
     description: "All-in-one platform designed to connect the Muslim American Society of Staten Island community.",
     title: "MAS Staten Island App",
