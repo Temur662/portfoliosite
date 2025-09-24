@@ -5,10 +5,10 @@ import { motion } from "framer-motion"
 
 export function ProfileCard() {
   const socials = [
-    {icon : <FileText className="text-[#3d53e2] hover:cursor-pointer h-[30px] w-[30px]"/>, link : 'https://crimson-gilemette-76.tiiny.site'},
+    {icon : <FileText className="text-[#3d53e2] hover:cursor-pointer h-[30px] w-[30px]"/>, link : '/TemurbekSayfutdinovResumeSept23.pdf'},
     {icon : <LinkedinIcon className="text-[#3d53e2] hover:cursor-pointer h-[30px] w-[30px]"/>, link : 'https://www.linkedin.com/in/temurbek-sayfutdinov/'},
     {icon : <Github className="text-[#3d53e2] hover:cursor-pointer  h-[30px] w-[30px]"/>, link: 'https://github.com/Temur662'},
-    {icon : <Mail className="text-[#3d53e2] hover:cursor-pointer  h-[30px] w-[30px]"/>, link : 'https://mailxto.com/y7nabhjw6y'}
+    {icon : <Mail className="text-[#3d53e2] hover:cursor-pointer  h-[30px] w-[30px]"/>, link : 'mailto:temurbeksayfutdinov@gmail.com?subject=Hey%20Temur!'}
   ]
   return (
     <div className="bg-white rounded-3xl p-6 flex flex-col items-center text-center max-w-sm max-h-md">
