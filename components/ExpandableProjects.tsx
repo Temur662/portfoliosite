@@ -26,7 +26,7 @@ export default function ExpandableCard() {
       }
     }
     if (active && typeof active === "object") {
-      document.body.style.overflow = "block";
+      document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "auto";
     }
@@ -50,83 +50,78 @@ export default function ExpandableCard() {
       </AnimatePresence>
       <AnimatePresence>
         {active && typeof active === "object" ? (
-          <div className="fixed inset-0  grid place-items-center z-[100] backdrop-blur-sm overflow-y-scroll h-full">
-            <motion.button
-              key={`button-${active.title}-${id}`}
-              layout
-              initial={{
-                opacity: 0,
-              }}
-              animate={{
-                opacity: 1,
-              }}
-              exit={{
-                opacity: 0,
-                transition: {
-                  duration: 0.05,
-                },
-              }}
-              className="flex absolute top-2 right-2 lg:hidden items-center justify-center bg-white rounded-full h-6 w-6"
-              onClick={() => setActive(null)}
-            >
-              <CloseIcon />
-            </motion.button>
-            <motion.div
-              layoutId={`card-${active.title}-${id}`}
-              ref={ref}
-              className="w-full max-w-4xl  h-full md:h-fit md:max-h-[90%]  flex flex-col bg-white dark:bg-neutral-900 sm:rounded-3xl overflow-hidden"
-            >
-              <motion.div layoutId={`image-${active.title}-${id}`}>
-                <Image
-                  priority
+          <div className="fixed inset-0 z-[100] backdrop-blur-sm overflow-y-auto">
+            <div className="min-h-full flex items-center justify-center p-4">
+              <motion.button
+                key={`button-${active.title}-${id}`}
+                layout
+                initial={{
+                  opacity: 0,
+                }}
+                animate={{
+                  opacity: 1,
+                }}
+                exit={{
+                  opacity: 0,
+                  transition: {
+                    duration: 0.05,
+                  },
+                }}
+                className="flex absolute top-6 right-6 lg:hidden items-center justify-center bg-white rounded-full h-8 w-8 z-10"
+                onClick={() => setActive(null)}
+              >
+                <CloseIcon />
+              </motion.button>
+              <motion.div
+                layoutId={`card-${active.title}-${id}`}
+                ref={ref}
+                className="w-full max-w-4xl max-h-[90vh] flex flex-col bg-white dark:bg-neutral-900 sm:rounded-3xl overflow-hidden"
+              >
+                <motion.div layoutId={`image-${active.title}-${id}`} className="flex-shrink-0">
+                  <Image
+                    priority
+                    src={active.src}
+                    alt={active.title}
+                    className="w-full h-80 lg:h-80 sm:rounded-tr-lg sm:rounded-tl-lg aspect-square object-cover object-top"
+                  />
+                </motion.div>
 
-                  src={active.src}
-                  alt={active.title}
-                  className="w-full h-80 lg:h-80 sm:rounded-tr-lg sm:rounded-tl-lg aspect-square object-cover object-top"
-                />
-              </motion.div>
+                <div className="flex flex-col flex-1 min-h-0">
+                  <div className="flex justify-between items-start p-4 flex-shrink-0">
+                    <div className="">
+                      <motion.h3
+                        layoutId={`title-${active.title}-${id}`}
+                        className="font-bold text-neutral-700 md:text-5xl text-2xl dark:text-neutral-200"
+                      >
+                        {active.title}
+                      </motion.h3>
+                    </div>
 
-              <div className="">
-                <div className="flex justify-between items-start p-4">
-                  <div className="">
-                    <motion.h3
-                      layoutId={`title-${active.title}-${id}`}
-                      className="font-bold text-neutral-700 md:text-5xl text-2xl dark:text-neutral-200"
+                    <motion.a
+                      layoutId={`button-${active.title}-${id}`}
+                      href={active.state ? active.ctaLink : undefined}
+                      target="_blank"
+                      className={`px-4 py-3 ${active.state ? 'text-sm' : 'text-xl'} rounded-full font-bold ${active.state ? 'bg-[#3d53e2]' : 'bg-gray-600 hover:cursor-wait'} text-white`}
                     >
-                      {active.title}
-                    </motion.h3>
-                    {/* <motion.p
-                      layoutId={`description-${active.description}-${id}`}
-                      className="text-neutral-600 dark:text-neutral-400"
-                    >
-                      {active.description}
-                    </motion.p> */}
+                      {active.ctaText}
+                    </motion.a>
                   </div>
-
-                  <motion.a
-                    layoutId={`button-${active.title}-${id}`}
-                    href={active.state ? active.ctaLink : undefined}
-                    target="_blank"
-                    className={`px-4 py-3 ${active.state ? 'text-sm' : 'text-xl'} rounded-full font-bold ${active.state ? 'bg-[#3d53e2]' : 'bg-gray-600 hover:cursor-wait'} text-white`}
-                  >
-                    {active.ctaText}
-                  </motion.a>
+                  <div className="flex-1 overflow-y-auto px-4 pb-4">
+                    <motion.div
+                      layout
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      className="text-neutral-600 text-xs md:text-sm lg:text-base dark:text-neutral-400"
+                    >
+                      {typeof active.content === "function"
+                        ? active.content()
+                        : active.content}
+                    </motion.div>
+                  </div>
                 </div>
-                <div className="pt-1 relative px-4">
-                  <motion.div
-                    layout
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    className=" text-neutral-600 text-xs md:text-sm lg:text-base h-auto md:h-fit pb-10 flex flex-col items-start gap-4 overflow-auto dark:text-neutral-400 [mask:linear-gradient(to_bottom,white,white,transparent)] [scrollbar-width:none] [-ms-overflow-style:none] [-webkit-overflow-scrolling:touch]"
-                  >
-                    {typeof active.content === "function"
-                      ? active.content()
-                      : active.content}
-                  </motion.div>
-                </div>
-              </div>
-            </motion.div>
+              </motion.div>
+            </div>
           </div>
         ) : null}
       </AnimatePresence>
@@ -348,7 +343,7 @@ const cards = [
           • Set up weekly favorites management system for cafe owners<br />
           • Developed image and text management system for dynamic content updates
           <br /><br />
-          <strong>Technologies Used</strong><br />
+          {/* <strong>Technologies Used</strong><br /> */}
           {/* <div className="flex flex-wrap gap-2 mt-2">
             <span className="px-3 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">Next.js</span>
             <span className="px-3 py-1 bg-green-100 text-green-800 text-xs rounded-full">React</span>
@@ -401,7 +396,7 @@ const cards = [
           • Implemented appointment scheduling and contact systems<br />
           • Optimized for local search rankings and patient acquisition
           <br /><br />
-          <strong>Technologies Used</strong><br />
+          {/* <strong>Technologies Used</strong><br /> */}
           {/* <div className="flex flex-wrap gap-2 mt-2">
             <span className="px-3 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">Next.js</span>
             <span className="px-3 py-1 bg-green-100 text-green-800 text-xs rounded-full">React</span>
@@ -451,7 +446,7 @@ const cards = [
           • Developed responsive design ensuring seamless access across all devices<br />
           • Implemented secure contact forms and appointment scheduling systems
           <br /><br />
-          <strong>Technologies Used</strong><br />
+          {/* <strong>Technologies Used</strong><br /> */}
           {/* <div className="flex flex-wrap gap-2 mt-2">
             <span className="px-3 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">Next.js</span>
             <span className="px-3 py-1 bg-green-100 text-green-800 text-xs rounded-full">React</span>
@@ -531,7 +526,7 @@ const cards = [
           This app is more than a tool—it's a gateway to staying connected with your masjid and fellow community members. Whether it's attending programs, learning from lectures, or keeping up with Jummah details, the MAS Staten Island app ensures you're always in the loop.
           Download the MAS Staten Island app today and bring your community experience to the next level!
           <br /><br />
-          <strong>Technologies Used</strong><br />
+          {/* <strong>Technologies Used</strong><br /> */}
           {/* <div className="flex flex-wrap gap-2 mt-2">
             <span className="px-3 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">React Native</span>
             <span className="px-3 py-1 bg-green-100 text-green-800 text-xs rounded-full">Expo</span>

@@ -33,7 +33,7 @@ export default function Home() {
     )
   }
   const handleWheel = (event) => {
-    if (scrollableRef.current) {
+    if (scrollableRef.current && WindowSize.width! > 768) {
       // Programmatically scroll the right-side container
       scrollableRef.current.scrollTop += event.deltaY;
     }
